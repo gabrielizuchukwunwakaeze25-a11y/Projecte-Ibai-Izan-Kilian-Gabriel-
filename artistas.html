@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistas</title>
+
+    <style>
+
+        /* ESTILO GENERAL */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* MENU DE NAVEGACION */
+        nav {
+            background-color: black;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: red;
+        }
+
+        /* TITULO PRINCIPAL */
+        h1 {
+            color: #222;
+            margin-bottom: 40px;
+        }
+
+        /* CONTENEDOR DE ARTISTAS */
+        .contenedor-artistas {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        /* TARJETAS DE ARTISTAS */
+        .artista-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 250px;
+        }
+
+        /* FOTOGRAFIAS */
+        .artista-card img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* NOMBRE DE LOS ARTISTAS */
+        .artista-card h2 {
+            font-size: 1.2rem;
+            margin-top: 15px;
+            color: #444;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- MENU PARA CAMBIAR DE APARTADO -->
+    <nav>
+        <a href="index.html">INICIO</a>
+        <a href="artistas.html">ARTISTAS</a>
+        <a href="combates.html">COMBATES</a>
+        <a href="contacto.html">CONTACTO</a>
+        <a href="entradas.html">ENTRADAS</a>
+        <a href="formulario.html">FORMULARIO</a>
+        <a href="preguntas.html">PREGUNTAS</a>
+    </nav>
+
+    <!-- TITULO DEL APARTADO -->
+    <h1>ARTISTAS</h1>
+
+    <!-- CONTENEDOR PRINCIPAL DE LOS ARTISTAS -->
+    <div class="contenedor-artistas">
+
+        <!-- ARTISTA 1: ANUEL AA -->
+        <div class="artista-card">
+            <img src="Anuel.jpg" alt="Fotografia de Anuel AA">
+            <h2>Anuel AA</h2>
+        </div>
+
+        <!-- ARTISTA 2: BABY GANG -->
+        <div class="artista-card">
+            <img src="babygang.jpg" alt="Fotografia de Baby Gang">
+            <h2>Baby Gang</h2>
+        </div>
+
+    </div>
+
+</body>
+</html>
