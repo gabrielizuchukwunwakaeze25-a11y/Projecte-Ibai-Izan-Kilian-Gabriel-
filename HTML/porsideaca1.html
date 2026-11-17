@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gran Velada de Boxa 2026</title>
+    <style>
+        /* ==========================================================================
+           2. DISSENY AMB CSS (Variables, Identitat Visual, Flexbox i Grid)
+           ========================================================================== */
+        :root {
+            --primary-color: #d90429;
+            --secondary-color: #ef233c;
+            --dark-color: #111111;
+            --card-bg: #1e1e1e;
+            --light-color: #edf2f4;
+            --accent-color: #ffb703;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Capçalera i Navegació */
+        header {
+            background-color: #000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        /* Seccions principals (Simulació de pàgines) */
+        main {
+            flex: 1;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        /* PÀGINA D'INICI */
+        .poster {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://via.placeholder.com/1200x500/333/fff?text=CARTEL+DE+LA+VELADA') center/cover;
+            text-align: center;
+            padding: 4rem 2rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+
+        .poster h1 {
+            font-size: 3rem;
+            color: #fff;
+        }
+
+        .poster p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .time-box {
+            background-color: var(--primary-color);
+            padding: 1rem;
+            border-radius: 5px;
+            min-width: 80px;
+        }
+
+        .time-box span {
+            display: block;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+
+        /* PÀGINA DE COMBATS (GRID) */
+        .combats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .combat-card {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .fighters {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 1rem 0;
+        }
+
+        .fighter img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
+        }
+
+        .vs {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            background-color: var(--card-bg);
+        }
+
+        .schedule-table th, .schedule-table td {
+            padding: 1rem;
+            border: 1px solid #333;
+            text-align: left;
+        }
+
+        .schedule-table th {
+            background-color: var(--primary-color);
+        }
+
+        /* PÀGINA DE PREGUNTES FREQÜENTS */
+        details {
+            background-color: var(--card-bg);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        summary {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+        }
+
+        details p {
+            margin-top: 0.5rem;
+        }
+
+        /* PÀGINA D'ENTRADES (FORMULARI) */
+        .form-group {
+            margin-bottom: 1.2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            padding: 0.8rem;
+            border-radius: 4px;
+            border: 1px solid #444;
+            background-color: #222;
+            color: #fff;
+        }
+
+        .checkbox-group {
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .price-summary {
+            background-color: var(--card-bg);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            font-size: 1.2rem;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        button[type="submit"] {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Peu de pàgina */
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 1.5rem;
+            border-top: 1px solid #333;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. ESTRUCTURA HTML: Header amb Navegació Comú -->
+    <header>
+        <div class="logo">🥊 Velada Boxa</div>
+        <nav>
+            <ul>
+                <li><a onclick="showPage('inici')" class="active">Inici</a></li>
+                <li><a onclick="showPage('combats')">Combats</a></li>
+                <li><a onclick="showPage('faq')">FAQ</a></li>
+                <li><a onclick="showPage('entrades')">Entrades</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 3.1. PÀGINA D'INICI -->
+        <section id="inici" class="page-section active">
+            <article class="poster">
+                <h1>LA GRAN VELADA DE BOXA</h1>
+                <p><strong>Data:</strong> 15 de Novembre, 2026</p>
+                <p><strong>Lloc:</strong> Palau dels Esports, Barcelona</p>
+                
+                <h2>Compte enrere</h2>
+                <div class="countdown">
+                    <div class="time-box"><span id="days">00</span>Dies</div>
+                    <div class="time-box"><span id="hours">00</span>Hores</div>
+                    <div class="time-box"><span id="minutes">00</span>Minuts</div>
+                    <div class="time-box"><span id="seconds">00</span>Segons</div>
+                </div>
+            </article>
+        </section>
+
+        <!-- 3.2. PÀGINA DE COMBATS -->
+        <section id="combats" class="page-section">
+            <h2>Fitxa de Combats</h2>
+            <div class="combats-grid">
+                <!-- Fitxa Combat 1 -->
+                <article class="combat-card">
+                    <h3>Combat Principal</h3>
+                    <div class="fighters">
+                        <div class="fighter">
+                            <img src="https://via.placeholder.com/80/d90429/fff?text=L1" alt="Fotografia de Marc 'El Martell' Soler">
+                            <p><strong>Marc Soler</strong></p>
+                            <p>25 anys | 1.82 m | 75 kg</p>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="fighter">
+                            <img src="https://via.placeholder.com/80/000/fff?text=L2" alt="Fotografia d'Alex 'Tauró' Gómez">
+                            <p><strong>Alex Gómez</strong></p>
+                            <p>27 anys | 1.80 m | 74.5 kg</p>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Fitxa Combat 2 -->
+                <article class="combat-card">
+                    <h3>Combat Semifinal</h3>
+                    <div class="fighters">
+                        <div class="fighter">
+                            <img src="https://via.placeholder.com/80/d90429/fff?text=L3" alt="Fotografia de Joan Roca">
+                            <p><strong>Joan Roca</strong></p>
+                            <p>22 anys | 1.75 m | 68 kg</p>
+                        </div>
+                        <div class="vs">VS</div>
+                        <div class="fighter">
+                            <img src="https://via.placeholder.com/80/000/fff?text=L4" alt="Fotografia de Dani Valls">
+                            <p><strong>Dani Valls</strong></p>
+                            <p>24 anys | 1.78 m | 69
