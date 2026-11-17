@@ -1,0 +1,100 @@
+
+
+        /* ESTILO GENERAL */
+        body {
+            background-color: white;
+            color: black;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        /* MENU DE NAVEGACION */
+        nav {
+            background-color: black;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: red;
+        }
+
+        /* CABECERA */
+        h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .boton {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+        }
+
+        /* COMBATES */
+        h2 {
+            font-size: 32px;
+            margin-top: 50px;
+            margin-bottom: 25px;
+        }
+
+        .foto-luchador {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin: 0 15px;
+            object-fit: cover;
+        }
+
+        .pelea-estrella {
+            border: 3px solid red;
+            color: red;
+            padding: 20px 30px;
+            display: inline-block;
+            font-weight: bold;
+            font-size: 26px;
+            margin-bottom: 30px;
+        }
+
+        .pelea {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 25px 0;
+        }
+
+        /* FORMULARIO */
+        #formulario {
+            margin-top: 60px;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 8px;
+            width: 250px;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-weight: bold;
+        }
+
