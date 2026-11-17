@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrades - Velada de Boxa 2026</title>
+    <link rel="stylesheet" href="estils.css">
+
+    <style>
+        /* MENU DE NAVEGACIO */
+        nav {
+            background-color: black;
+            padding: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 10px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="index.html">INICIO</a>
+        <a href="artistas.html">ARTISTAS</a>
+        <a href="combates.html">COMBATES</a>
+        <a href="contacto.html">CONTACTO</a>
+        <a href="entradas.html">ENTRADAS</a>
+        <a href="formulario.html">FORMULARIO</a>
+        <a href="preguntas.html">PREGUNTAS</a>
+    </nav>
+
+    <header>
+        <a href="index.html" class="logo"> Velada Boxa</a>
+    </header>
+
+    <main>
+        <h2>Compra d'Entrades</h2>
+        <form onsubmit="handleFormSubmit(event)">
+            <div class="form-group">
+                <label for="zona">Tria la zona:</label>
+                <select id="zona" onchange="calculateTotal()" required>
+                    <option value="45">General (45€)</option>
+                    <option value="80">Grada preferent (80€)</option>
+                    <option value="150">Seients i serveis exculius (150€)</option>
+                    <option value="250">Ringzone (250€)</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="quantitat">Nombre d'entrades (1 a 4):</label>
+                <input type="number" id="quantitat" min="1" max="4" value="1" onchange="calculateTotal()" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nom">Nom i cognoms:</label>
+                <input type="text" id="nom">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Correu electronic:</label>
+                <input type="email" id="email">
+            </div>
+
+            <div class="form-group">
+                <label for="telefon">Telefon:</label>
+                <input type="tel" id="telefon">
+            </div>
+
+            <div class="form-group">
+                <label for="data-naixement">Data de naixement:</label>
+                <input type="date" id="data-naixement">
+            </div>
+
+            <div class="form-group checkbox-group">
+                <input type="checkbox" id="condicions">
+                <label for="condicions">Accepto les condicions.</label>
+            </div>
+
+            <div class="price-summary">
+                <p>Preu entrades: <span id="subtotal">30.00</span>€</p>
+                <p>Despeses de gestio: <span>2.50</span>€</p>
+                <p><strong>Total: <span id="total-price">32.50</span>€</strong></p>
+            </div>
+
+            <button type="submit">Confirmar i pagar</button>
+        </form>
+    </main>
+
+    <script>
+        function calculateTotal() {
+            const pricePerTicket = parseFloat(document.getElementById("zona").value);
+            const quantity = parseInt(document.getElementById("quantitat").value) || 1;
+            const bookingFee = 2.50;
+
+            const subtotal = pricePerTicket * quantity;
+            const total = subtotal + bookingFee;
+
+            document.getElementById("subtotal").innerText = subtotal.toFixed(2);
+            document.getElementById("total-price").innerText = total.toFixed(2);
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const nom = document.getElementById("nom").value;
+            const quantitat = document.getElementById("quantitat").value;
+            const total = document.getElementById("total-price").innerText;
+
+            alert(`Gracies per la teva compra, ${nom}!\nHas reservat ${quantitat} entrada/es per un total de ${total}€.\nRebras la confirmacio al teu correu.`);
+        }
+    </script>
+</body>
+</html>
